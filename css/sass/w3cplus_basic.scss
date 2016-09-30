@@ -1,8 +1,118 @@
-
+@charset "utf-8";
+/*default 设置*/
 $baseLineHeight:        1.5 !default;
 $baseLineHeight:        50;
 body{
     line-height: $baseLineHeight; 
 }
-
+/*list :一维数组*/
 $px: 5px 10px 20px 30px;
+/*二维数组*/
+$px2: 5px 10px,10px 20px 20px 40px;
+
+.px{
+	float:nth($px,2);
+}
+.px2{
+	padding:nth($px2,2);
+	margin:nth(nth($px2,2),1);
+}
+
+/*map : key-value*/
+$headings:(h1:2em,h2:1.5em,h3:1.2em);
+@each $header,$size in $headings{
+	#{$header}{
+		font-size:$size;
+	}
+}
+
+$paddings:1px 2px 3px 4px;
+@for $i from 1 to 4{
+	#p#{$i}{
+		padding:$paddings;
+	}
+}
+/*全局变量：!global */
+$fontSize:      12px;
+$color:   red;
+body{
+    $fontSize: 14px;
+    $color: yellow !global;        
+    font-size:$fontSize;
+}
+p{
+    font-size:$fontSize;
+    color:$color;
+}
+
+/*多个参数mixin*/
+@mixin horizontal-line($border:1px dashed #ccc, $padding:10px){
+    border-bottom:$border;
+    padding-top:$padding;
+    padding-bottom:$padding;  
+}
+.imgtext-h li{
+    @include horizontal-line(1px solid #ccc);
+}
+.imgtext-h--product li{
+    @include horizontal-line($padding:15px);
+}
+/*变参mixin */
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow:$shadow;
+  box-shadow:$shadow;
+}
+.box{
+  border:1px solid #ccc;
+  @include box-shadow(0 2px 2px rgba(0,0,0,.3),0 3px 3px rgba(0,0,0,.3),0 4px 4px rgba(0,0,0,.3));
+}
+
+/*占位选择器*/
+%ir{
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+%clearfix{
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+    font: 0/0 a;
+  }
+  &:after {
+    clear: both;
+  }
+}
+#header{
+  h1{
+    @extend %ir;
+    width:300px;
+  }
+}
+.ir{
+  @extend %ir;
+}
+/*条件表达式*/
+$p3:if(true,1px,2px);
+.p3{
+	border:$p3;
+}
+/*for循环， through 包括end，to不包括end*/
+@for $i from 1 through 2 {
+  .item-#{$i} { width: 2em * $i; }
+}
+@for $i from 1 to 2 {
+  .a-#{$i} { width: 2em * $i; }
+}
+
+/*多个字段list数据循环*/
+$animal-data: (puma, black, default),(sea-slug, blue, pointer),(egret, white, move);
+@each $animal, $color, $cursor in $animal-data {
+  .#{$animal}-icon {
+    background-image: url('/images/#{$animal}.png');
+    border: 2px solid $color;
+    cursor: $cursor;
+  }
+}
