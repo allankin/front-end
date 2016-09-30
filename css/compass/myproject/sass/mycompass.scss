@@ -1,0 +1,29 @@
+@import "compass/css3";
+@import "compass/layout";
+@import "compass/typography"; 
+@import "compass/utilities/";
+.rounded{
+	@include border-radius(5px);
+}
+.rounded2{
+	@include border-corner-radius(top,left,5px);
+}
+#opacity{
+	@include opacity(0.5);
+}
+#inline-block{
+	@include inline-block;
+}
+#footerd {
+	@include sticky-footer(54px);
+}
+#stretch-full {
+	@include stretch;
+} 
+/* link-colors($normal, $hover, $active, $visited, $focus); */
+a{
+	@include link-colors(#00c, #0cc, #c0c, #ccc, #cc0);
+} 
+.clearfix {
+@include clearfix; 
+}
