@@ -1,0 +1,136 @@
+@charset "utf-8";
+/*变量，以$开头,如果嵌在字符串中，必须写在#{中}*/
+$blue:#1875e7;
+div{
+  color:$blue;
+}
+
+$side:right;
+.rounded{
+  border-#{$side}-radius:5px;
+}
+
+/*计算功能*/
+$var:10;
+body{
+  margin:(14px/2);
+  top:50px + 100px;
+  right:$var * 10%;
+}
+
+div h1{
+  color:red;
+}
+/*嵌套*/
+div {
+  hl{
+    color:red;
+  }
+  div{
+    p{
+      /*嵌套中可以用&引用父元素*/
+      a{
+        color:$blue;
+        &:hover{color:yellow;}
+      }
+      /*属性也可以嵌套，比如：border-color属性，border后必须加上冒号*/
+      border:{
+        color:$blue; 
+      }
+      color:$blue;
+      border-color:red;
+    }
+  }
+}
+//注释 只存在SASS源码文件中，编译后忽略
+/*编译后会保留*/
+
+/*!
+  重要注释,用来声明版权等
+  Author: Kim
+  Version: 1.0
+*/
+
+/********代码重用**************/
+/*继承*/
+.class1{
+  border:1px solid #ddd;
+}
+.class2{
+  @extend .class1;
+  font-size:120%;
+}
+
+/*Mixin: 类似C的宏，可以重用代码块*/
+@mixin left{
+  float:left;
+  margin-left:10px;
+}
+div{
+  @include left
+}
+
+@mixin left($value:10px){
+  float:left;
+  margin-right:$value;
+}
+div{
+  @include left(50px);
+}
+/*还可以指定参数，可以设置参数默认值*/
+/*生成浏览器前缀的公共代码块*/
+@mixin rounded($vert,$horz,$radius:10px){
+  border-#{$vert}-#{$horz}-radius:$radius;
+  -moz-border-radius-#{$vert}-#{$horz}:$radius;
+  -webkit-border-#{$vert}-#{$horz}-radius:$radius;
+}
+
+#navbar li{
+  @include rounded(top,left);
+}
+#footer{ 
+  @include rounded(top,right,50px)
+}
+/*sass内置颜色函数*/
+span{
+  color:lighten(#cc3,10%);// #d6d65c
+  color:darken(#cc3, 10%);// #a3a329
+  color:grayscale(#cc3); // #808080
+  color:complement(#cc3); // #33c
+}
+/*@import命令插入外部文件, eg: @import "path/foo.css" */
+
+/*高级用法*/
+/*条件语句 @if, @if ... @else*/
+$color:red;
+p{
+  @if 1+1==2 {border:1px solid;}
+  @if 5<3 {border:2px dotted;}
+  @if lightness($color) > 20% {
+    background-color: #000;
+  } @else {
+    background-color: #fff;
+  }
+}
+
+/*循环语句 @for  @while  @each */
+@for $i from 1 to 10{
+  .border-#{$i}{
+    border:#{$i}px solid blue;
+  }
+}
+$i:0;
+@while $i<3{
+  .itm-#{$i}{
+    width:2em * $i;
+    $i:$i+1;
+  }
+}
+/*自定义函数*/
+@function double1($n){
+  @return $n * 2;
+}
+#sidebar2{
+  width:double1(5px);
+}
+ 
