@@ -1,9 +1,10 @@
 {
   "devDependencies": {
-    "babel-cli": "^6.16.0"
+    "babel-cli": "^6.16.0",
+    "babel-core": "^6.17.0"
   },
-  "scripts":{
-    "build":"babel ./js -d out/ -s",
-    "script-name":"babel-node ./js/es6.js"
+  "scripts": {
+    "build": "babel ./js -d out/ -s",
+    "script-name": "babel-node ./js/es6.js"
   }
 }
