@@ -1,0 +1,48 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>React Tutorial</title>
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.min.js"></script>
+    <script src="js/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="content"></div>
+    <script type="text/babel">
+      var mixin = {
+          propTypes: {
+              title: React.PropTypes.string,
+          },
+
+          getDefaultProps(){
+              return {
+                  title:'default'
+              };
+          },
+      };
+
+      var A = React.createClass({
+          mixins: [mixin],
+          render(){
+              return <i>{this.props.title}</i> 
+          }
+      });
+
+      var B = React.createClass({
+          mixins: [mixin],
+          render(){
+              return <b>{this.props.title}</b>
+          }
+      });
+
+      ReactDOM.render(<div>
+        <B/><br/> 
+        <A title={2}/><br/>
+        <A/><br/>
+        </div>,document.getElementById('content')
+      );
+    </script>
+  </body>
+</html>

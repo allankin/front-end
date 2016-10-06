@@ -1,0 +1,33 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>React Tutorial</title>
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.min.js"></script>
+    <script src="js/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="content"></div>
+    <script type="text/babel">
+      var alink = 'http://www.alipay.com';
+      var obj = {
+        href: alink,
+        target:"_blank"
+      };
+      var y = <a {...obj} >alipay.com</a>;
+      var divItem = <div>
+        <h1>{y}</h1>
+      </div>;
+      var divContainer = <div>
+        {divItem}
+      </div>;
+       
+      ReactDOM.render(
+        divContainer,
+        document.getElementById('content')
+      );
+    </script>
+  </body>
+</html>
