@@ -1,0 +1,75 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>React Tutorial</title>
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.min.js"></script>
+    <script src="js/babel.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/remarkable.min.js"></script>
+  </head>
+  <body>
+    <div id="content"></div>
+    <script type="text/babel">
+      var MyComponent = React.createClass({
+        getInitialState:function(){
+          console.log("getInitialState...");
+          return {text:22};
+        },
+        componentWillMount:function(){
+          console.log("componentWillMount...state:"+this.state.text);
+          this.setState({text:'componentWillMount'});
+        },
+        componentDidMount:function(){
+          console.log("componentDidMount...");
+          this.props.date = Date.now();
+          console.log("props.date:"+this.props.date);
+          //this.getDOMNode()
+        },
+        componentWillUpdate:function(nextProps,nextState){
+          console.log("componentWillUpdate...");
+        },
+        componentDidUpdate:function(prevProps,prevState){
+          console.log("componentDidUpdate...");
+          this.props.date = Date.now();
+          console.log("props.date:"+this.props.date);
+          this.props.newPop = 12;
+        },
+        componentWillReceiveProps:function(nextProps){
+          console.log("componentWillReceiveProps...");  
+        },
+        shouldComponentUpdate:function(nextProps,nextState){
+          console.log("shouldComponentUpdate...return true: do update, false:donot update");  
+          return true;
+        },
+        componentWillUnmount:function(){
+          console.log("componentWillUnmount...");
+        },
+        componentUndidMount:function(){
+          console.log("componentUndidMount...");
+        },
+        textOnchange: function() {
+          var text = this.refs.myTextInput.value;
+          this.refs.h1.innerHTML=text;
+          this.setState({text:text});
+        },
+        render: function() {
+          console.log("render...");  
+          return (
+            <div>
+              <input type="text" ref="myTextInput" name="textInput" onChange={this.textOnchange} />
+              <h1 ref="h1" name="h1">{this.state.text}</h1>
+              <h2>{this.state.text}</h2>
+            </div>
+          );
+        }
+      });
+      ReactDOM.render(
+        <MyComponent date="" />,
+        document.getElementById('content')
+      );
+    </script>
+  </body>
+</html>
