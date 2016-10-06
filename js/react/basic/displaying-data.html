@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello React</title>
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.min.js"></script>
+    <script src="js/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+
+    class HelloWorld extends React.Component {
+      render() {
+        return (
+          <p>
+            Hello, <input type="text" placeholder="Your name here" />!
+            It is {this.props.date.toTimeString()}
+          </p>
+        );
+      }
+    }
+
+    var tick = function () {
+      ReactDOM.render(
+        <HelloWorld date={new Date()} />,
+        document.getElementById('example')
+      );
+    }
+
+    setInterval(tick, 500);
+
+    </script>
+  </body>
+</html>
