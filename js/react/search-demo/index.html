@@ -14,6 +14,9 @@
     <div id="content"></div>
     <script type="text/babel">
       var SearchBar = React.createClass({
+        propTypes:{
+          searchText:React.PropTypes.string.isRequired
+        },
         searchTextOnChange:function(e){
           var text = this.refs.searchTextInput.value;
           console.log(this.refs.isStockCheckBox.checked);
@@ -23,8 +26,8 @@
         render: function() {
           return (
             <div>
-              <input type="text" ref='searchTextInput' onChange={this.searchTextOnChange}/><br/>
-              <input type="checkbox" ref='isStockCheckBox' onChange={this.searchTextOnChange}/> only show in stock
+              <input type="text" ref='searchTextInput' onChange={this.searchTextOnChange} value={this.props.searchText}/><br/>
+              <input type="checkbox" ref='isStockCheckBox' onChange={this.searchTextOnChange} checked={this.props.stocked}/> only show in stock
             </div>
           );
         }
@@ -101,18 +104,24 @@
       });
 
       var SearchContainer = React.createClass({
+        getInitialState:function(){
+          return {
+            searchText:'',
+            stocked:false
+          };
+        },
         handleUserInput:function(searchText,stocked){
-            this.props.searchText = searchText;
-            this.props.stocked = stocked;
-            console.log("SearchContainer handleUserInput:"+this.props.searchText+',this.props.stocked:'+this.props.stocked);
-            this.forceUpdate();
+            this.setState({
+              searchText:searchText,
+              stocked:stocked
+            });
         },
         render: function(){
           console.log("SearchContainer render");
           return (
             <div>
-              <SearchBar onUserInput={this.handleUserInput}/>
-              <ProductTable url="products.json" searchText={this.props.searchText} stocked={this.props.stocked}/>
+              <SearchBar onUserInput={this.handleUserInput} searchText={this.state.searchText} stocked={this.state.stocked}/>
+              <ProductTable url="products.json" searchText={this.state.searchText} stocked={this.state.stocked}/>
             </div>
           );
         }
