@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>React Tutorial</title>
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.min.js"></script>
+    <script src="js/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="content"></div>
+    <script type="text/babel">
+      var Greeting = function(props){
+        return <h1>Hello,{props.name}</h1>;
+      }
+      Greeting.propTypes = {
+        name: React.PropTypes.string
+      };
+
+      Greeting.defaultProps = {
+        name: 'John Doe'
+      };
+      ReactDOM.render(
+        <div>
+          <Greeting />
+          {Greeting({name:'ss'})}
+        </div>,
+        document.getElementById('content')
+      );
+    </script>
+  </body>
+</html>

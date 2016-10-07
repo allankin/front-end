@@ -1,0 +1,65 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>React Tutorial</title>
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.min.js"></script>
+    <script src="js/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="content"></div>
+    <script type="text/babel">
+      class LikeButton extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            liked: false
+          };
+          this.handleClick = this.handleClick.bind(this);
+        }
+        t2(){
+          console.log("t2 this:"+this);
+        }
+        handleClick() {
+          console.log("this:"+this);
+          //t2();
+          this.setState({liked: !this.state.liked});
+        }
+        render() {
+          const text = this.state.liked ? 'liked' : 'haven\'t liked';
+          return (
+            <div onClick={this.handleClick}>
+              You {text} this. Click to toggle.
+            </div>
+          );
+        }
+      }
+
+      var LikeButton1 = React.createClass({
+        getInitialState(){
+          return {liked:false};
+        },
+        handleClick() {
+          this.setState({liked: !this.state.liked});
+        },
+        render(){
+          const  text = this.state.liked ? 'liked' : 'haven\'t liked';
+          return (
+            <div onClick={this.handleClick}>
+              You {text} this. Click to toggle.
+            </div>
+          );
+        }
+      });
+      ReactDOM.render(
+        <div>
+         <LikeButton />,
+         <LikeButton1/> 
+        </div>,
+        document.getElementById('content')
+      );
+    </script>
+  </body>
+</html>
