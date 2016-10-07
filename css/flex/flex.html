@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style type="text/css">
+      .container{
+        width: 100%;
+        border:1px solid black;
+        display: flex;
+        margin-bottom: 10px;
+      }
+      #container1{
+        flex-direction: row;
+      }
+      .container div{ 
+        width: 50px;
+        height: 50px; 
+      }  
+
+      #container2{
+        flex-direction: row-reverse;
+      }
+
+      #container3{
+        flex-direction: column ;
+      }
+      #container4{
+        flex-direction: column-reverse ;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>flex-direction: row;</h3>
+    <div id="container1" class='container'>
+      <div style="background-color:coral;">A</div>
+      <div style="background-color:lightblue;">B</div>
+      <div style="background-color:khaki;">C</div>
+      <div style="background-color:pink;">D</div>
+      <div style="background-color:lightgrey;">E</div>
+      <div style="background-color:lightgreen;">F</div>
+    </div>
+    <h3>flex-direction: row-reverse;</h3>
+    <div id="container2" class='container'>
+      <div style="background-color:coral;">A</div>
+      <div style="background-color:lightblue;">B</div>
+      <div style="background-color:khaki;">C</div>
+      <div style="background-color:pink;">D</div>
+      <div style="background-color:lightgrey;">E</div>
+      <div style="background-color:lightgreen;">F</div>
+    </div>
+    <h3>flex-direction: column;</h3>
+    <div id="container3" class='container' >
+      <div style="background-color:coral;">A</div>
+      <div style="background-color:lightblue;">B</div>
+      <div style="background-color:khaki;">C</div>
+      <div style="background-color:pink;">D</div>
+      <div style="background-color:lightgrey;">E</div>
+      <div style="background-color:lightgreen;">F</div>
+    </div>
+    <h3>flex-direction: column-reverse;</h3>
+    <div id="container4" class='container' >
+      <div style="background-color:coral;">A</div>
+      <div style="background-color:lightblue;">B</div>
+      <div style="background-color:khaki;">C</div>
+      <div style="background-color:pink;">D</div>
+      <div style="background-color:lightgrey;">E</div>
+      <div style="background-color:lightgreen;">F</div>
+    </div>
+
+
+
+    <h3>flex-wrap: nowrap;</h3>
+    <div class='container' style="flex-wrap: nowrap;">
+      <div style="background-color:coral;">A</div>
+      <div style="background-color:lightblue;">B</div>
+      <div style="background-color:khaki;">C</div>
+      <div style="background-color:pink;">D</div>
+      <div style="background-color:lightgrey;">E</div>
+      <div style="background-color:lightgreen;">F</div>
+      <div style="background-color:khaki;width: 200px">G</div>
+      <div style="background-color:pink;width: 400px">H</div>
+      <div style="background-color:lightgrey;width: 300px">I</div>
+      <div style="background-color:lightgreen;width: 500px">J</div>
+    </div>
+    <h3>flex-wrap: wrap;</h3>
+    <div class='container' style="flex-wrap: wrap;">
+      <div style="background-color:coral;">A</div>
+      <div style="background-color:lightblue;">B</div>
+      <div style="background-color:khaki;">C</div>
+      <div style="background-color:pink;">D</div>
+      <div style="background-color:lightgrey;">E</div>
+      <div style="background-color:lightgreen;">F</div>
+      <div style="background-color:khaki;width: 200px">G</div>
+      <div style="background-color:pink;width: 400px">H</div>
+      <div style="background-color:lightgrey;width: 300px">I</div>
+      <div style="background-color:lightgreen;width: 500px">J</div>
+    </div>
+    <h3>flex-wrap: wrap-reverse;</h3>
+    <div class='container' style="flex-wrap: wrap-reverse;">
+      <div style="background-color:coral;">A</div>
+      <div style="background-color:lightblue;">B</div>
+      <div style="background-color:khaki;">C</div>
+      <div style="background-color:pink;">D</div>
+      <div style="background-color:lightgrey;">E</div>
+      <div style="background-color:lightgreen;">F</div>
+      <div style="background-color:khaki;width: 200px">G</div>
+      <div style="background-color:pink;width: 400px">H</div>
+      <div style="background-color:lightgrey;width: 300px">I</div>
+      <div style="background-color:lightgreen;width: 500px">J</div>
+    </div>
+
+
+
+    <h3>flex-flow: row-reverse wrap;</h3>
+    <div class='container' style="flex-flow:row-reverse wrap;">
+      <div style="background-color:coral;">A</div>
+      <div style="background-color:lightblue;">B</div>
+      <div style="background-color:khaki;">C</div>
+      <div style="background-color:pink;">D</div>
+      <div style="background-color:lightgrey;">E</div>
+      <div style="background-color:lightgreen;">F</div>
+      <div style="background-color:khaki;width: 200px">G</div>
+      <div style="background-color:pink;width: 400px">H</div>
+      <div style="background-color:lightgrey;width: 300px">I</div>
+      <div style="background-color:lightgreen;width: 500px">J</div>
+    </div>
+
+
+
+    <h3>justify-content: flex-start;</h3>
+    <div class='container' style="justify-content:flex-start;">
+      <div style="background-color:coral;">A</div>
+      <div style="background-color:lightblue;">B</div>
+      <div style="background-color:khaki;">C</div>
+      <div style="background-color:pink;">D</div>
+    </div>
+    <h3>justify-content: flex-end;</h3>
+    <div class='container' style="justify-content:flex-end;">
+      <div style="background-color:coral;">A</div>
+      <div style="background-color:lightblue;">B</div>
+      <div style="background-color:khaki;">C</div>
+      <div style="background-color:pink;">D</div>
+    </div>
+    <h3>justify-content: center;</h3>
+    <div class='container' style="justify-content:center;">
+      <div style="background-color:coral;">A</div>
+      <div style="background-color:lightblue;">B</div>
+      <div style="background-color:khaki;">C</div>
+      <div style="background-color:pink;">D</div>
+    </div>
+    <h3>justify-content: space-between;</h3>
+    <div class='container' style="justify-content:space-between;">
+      <div style="background-color:coral;">A</div>
+      <div style="background-color:lightblue;">B</div>
+      <div style="background-color:khaki;">C</div>
+      <div style="background-color:pink;">D</div>
+    </div>
+    <h3>justify-content: space-around;</h3>
+    <div class='container' style="justify-content:space-around;">
+      <div style="background-color:coral;">A</div>
+      <div style="background-color:lightblue;">B</div>
+      <div style="background-color:khaki;">C</div>
+      <div style="background-color:pink;">D</div>
+    </div>
+
+
+    <h3>align-items: flex-start;</h3>
+    <div class='container' style="align-items:flex-start;">
+      <div style="background-color:coral;height:100px">A</div>
+      <div style="background-color:lightblue;height:50px">B</div>
+      <div style="background-color:khaki;height:150px">C</div>
+      <div style="background-color:pink;height:130px">D</div>
+    </div>
+    <h3>align-items: flex-end;</h3>
+    <div class='container' style="align-items:flex-end;">
+      <div style="background-color:coral;height:100px">A</div>
+      <div style="background-color:lightblue;height:50px">B</div>
+      <div style="background-color:khaki;height:150px">C</div>
+      <div style="background-color:pink;height:130px">D</div>
+    </div>
+    <h3>align-items: center;</h3>
+    <div class='container' style="align-items:center;">
+      <div style="background-color:coral;height:100px">A</div>
+      <div style="background-color:lightblue;height:50px">B</div>
+      <div style="background-color:khaki;height:150px">C</div>
+      <div style="background-color:pink;height:130px">D</div>
+    </div>
+    <h3>align-items: baseline;</h3>
+    <div class='container' style="align-items:baseline;">
+      <div style="background-color:coral;height:100px;font-size: 10px">A</div>
+      <div style="background-color:lightblue;height:50px;font-size: 25px">B</div>
+      <div style="background-color:khaki;height:150px;font-size: 40px">C</div>
+      <div style="background-color:pink;height:130px;font-size: 19px">D</div>
+    </div>
+    <h3>align-items: stretch;</h3>
+    <div class='container' style="align-items:stretch;">
+      <div style="background-color:coral;height:auto;font-size: 10px">A</div>
+      <div style="background-color:lightblue;height:100px;font-size: 25px">B</div>
+      <div style="background-color:khaki;height:150px;font-size: 40px">C</div>
+      <div style="background-color:pink;height:130px;font-size: 19px">D</div>
+    </div>
+
+
+    <h3>order</h3>
+    <div class='container' style="">
+      <div style="background-color:coral;order:4">A 4</div>
+      <div style="background-color:lightblue;order:3">B 3</div>
+      <div style="background-color:khaki;order:2">C 2</div>
+      <div style="background-color:pink;order:1">D 1</div>
+    </div>
+
+    <h3>flex-grow</h3>
+    <div class='container' style="">
+      <div style="background-color:coral;flex-grow: 2">A 2</div>
+      <div style="background-color:lightblue;flex-grow: 1">B 1</div>
+      <div style="background-color:khaki;flex-grow: 1">C 1</div>
+      <div style="background-color:pink;flex-grow: 2">D 2</div>
+    </div>  
+    <h3>flex-shrink</h3>
+    <div class='container' style="">
+      <div style="background-color:coral;width:600px;flex-shrink: 2">A 2</div>
+      <div style="background-color:lightblue;width:600px;flex-shrink: 0">B 1</div>
+      <div style="background-color:khaki;width:600px;flex-shrink: 1">C 1</div>
+      <div style="background-color:pink;width:600px;flex-shrink: 2">D 2</div>
+    </div>
+
+    </div>
+    <h3>align-items: center; align-self:</h3>
+    <div class='container' style="align-items:center;">
+      <div style="background-color:coral;height:100px">A</div>
+      <div style="background-color:lightblue;height:50px">B</div>
+      <div style="background-color:khaki;height:150px">C</div>
+      <div style="background-color:pink;height:50px;align-self: flex-end;">D</div>
+    </div>
+  </body>
+</html>
