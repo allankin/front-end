@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>promise demo</title>
+  <style>
+ 
+  </style>
+  <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+ 
+<button id="button1">promise</button><br/>
+<button id="button2">$.when()</button><br/>
+<button id="button3">$.deferred()</button><br/>
+ 
+ 
+<script>
+$("#button1").on( "click", function() {
+  var promise =  $.ajax({url: "promise.html"});
+  console.log(promise);
+  
+  promise.always(function(){
+    console.log("always 1....");
+  });
+  promise.always(function(){
+    console.log("always 2....");
+  });
+  promise.done(function(){
+    console.log("done 1...");
+  });
+  promise.fail(function(){
+    console.log("fail 1....");
+  });
+/*
+ 
+  promise.then(function(){
+    console.log("then....");
+  });
+*/
+ promise.then(function(){
+      console.log("done 2 ...");
+  },function(){
+      console.log("fail 2 ...");
+  });
+});
+
+$("#button2").on( "click", function() {
+  var promise1 =  $.ajax({url: "promise.html"});
+  var promise2 =  $.ajax({url: "promise.html"});
+  promise1.done(function(){
+    console.log("promise1 done...");
+  });
+  promise2.done(function(){
+    console.log("promise2 done...");
+  });
+  $.when(promise1,promise2).done(function(jqxhr1,jqxhr2){
+    console.log(jqxhr1);
+    
+    console.log("all complete...");
+
+  });
+});
+$("#button3").on( "click", function() {
+  var timer;
+  var result = $("<div>waiting</div>");
+  $("body").append(result);
+  var promise = process();
+  promise.done(function(){
+    result.html("done....");
+  });
+  promise.progress(function(){
+    result.html(result.html()+".");
+  });
+  function process(){
+    var deferred = $.Deferred();
+    console.log(deferred);
+    timer = setInterval(function(){
+      deferred.notify()},1000);
+    setTimeout(function(){
+      clearInterval(timer);
+      deferred.resolve();
+    },10000);
+    return deferred.promise();
+  };
+});
+</script>
+ 
+</body>
+</html>
