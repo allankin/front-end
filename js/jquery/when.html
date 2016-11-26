@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>promise demo</title>
+   
+  <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+ 
+<button>When</button>
+ 
+ 
+<script>
+$( "button" ).on( "click", function() {
+  var step1 = function(){
+    var deferred = $.Deferred();
+    setTimeout(function(){
+      deferred.resolve("step1");
+    },3000);
+    return deferred.promise();
+  };
+  var promise1 = step1();
+  promise1.done(function(){
+    console.log('........');
+    return "step1";
+  });
+  var step2 = function(data){
+    console.log("step2 receive data:"+data);
+    var deferred = $.Deferred();
+    setTimeout(function(){
+      deferred.resolve("step2");
+      console.log("step2");
+    },1000);
+    return deferred.promise();
+  };
+  /* step1,step2异步执行，相互之间没有依赖*/
+  $.when(step1(),step2()).done(function(step1Ret,step2Ret){
+    console.log("step1Ret:"+step1Ret+",step2Ret:"+step2Ret);
+    console.log("complete");
+  });
+  
+});
+</script>
+ 
+</body>
+</html>
