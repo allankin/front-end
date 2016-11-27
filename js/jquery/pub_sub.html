@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>promise demo</title>
+  <style>
+   
+  </style>
+  <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+ 
+<button>Go</button>
+<p>Ready...</p>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+ 
+<script>
+/**
+* Created by kim.
+* Useage:
+* EEmitter.sub(eventName,func);
+* EEmitter.pub(eventName);
+*/
+(function(mod){
+  var events ={};
+  mod.sub = function(eventName,callback){
+    if(!events[eventName]){
+      events[eventName] = [];
+    }
+    events[eventName].push(callback);
+    return this;
+  };
+  mod.pub = function(eventName){
+    if(!events[eventName]){
+      throw new Error('no eventName subscribe');
+    }
+    var args = Array.prototype.slice.call(arguments,1); 
+    events[eventName].forEach(function(item,index){
+      item.call(this,args);
+    });
+    return this;
+  };
+  return mod;
+})(window.EEmitter||(window.EEmitter={}));
+ 
+EEmitter.sub("jsLoaded",function(jsonObj){
+  console.log("jsLoaded callback1...."+jsonObj);
+}).sub("jsLoaded",function(jsonObj){
+  console.log("jsLoaded callback2...."+jsonObj);
+});
+$(function(){
+  EEmitter.pub("jsLoaded",{'id':"1234565"});
+}); 
+</script>
+ 
+</body>
+</html>
