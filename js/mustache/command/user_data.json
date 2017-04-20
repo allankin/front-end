@@ -1,0 +1,15 @@
+{
+	"name":"kim",
+	"age":20,
+	"address":"杭州",
+	"skills":[
+		{
+			"language":"English",
+			"level":4
+		},
+		{
+			"language":"java",
+			"level":5
+		}
+	]
+}
