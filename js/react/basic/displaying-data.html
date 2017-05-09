@@ -9,6 +9,8 @@
   </head>
   <body>
     <div id="example"></div>
+    <br/>
+    <div id="example2"></div>
     <script type="text/babel">
 
     class HelloWorld extends React.Component {
@@ -29,8 +31,36 @@
       );
     }
 
-    setInterval(tick, 500);
+    setInterval(tick, 1000);
+    
 
+
+    class TimeClock extends React.Component{
+      constructor(props) {
+        super(props);
+        this.state = {datetime: new Date()};
+        var timeClock = this;
+        setInterval(function(){
+          timeClock.setState({"datetime":new Date()});
+        },1000);
+      }
+      render() {
+        return (
+          <p>
+            {this.state.datetime.toTimeString()}
+          </p>
+        );
+      }
+
+    }
+    
+ 
+    ReactDOM.render(
+        <TimeClock />,
+        document.getElementById('example2')
+    );
+
+ 
     </script>
   </body>
 </html>
