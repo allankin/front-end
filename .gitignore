@@ -1,2 +1,5 @@
 /**/node_modules
 /css/css-modules/build
+/js/react-native/demo/__tests__
+/js/react-native/demo/android
+/js/react-native/demo/ios
